@@ -2,7 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
+app.use(express.json);
+
 app.get("/", (req, res) => [res.send("Hello everyone Wassup")]);
+
+app.post("/api/products", (req, res) => {
+  res.send(req.body);
+  console.log(req.body);
+});
 
 mongoose
   .connect(
