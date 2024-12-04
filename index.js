@@ -9,18 +9,27 @@ app.get("/", (req, res) => {
   res.send("Hello everyone Wassup");
 });
 
+app.get("/api/products", async (req, res) => {
+  try {
+    const products = await Product.find({});
+    console.log(products);
+  } catch (error) {
+    res.status(500).json({ message: message.error });
+  }
+});
+
 app.post("/api/products", async (req, res) => {
   try {
     const product = await Product.create(req.body);
     res.status(200).json(product);
   } catch (error) {
-    res.send(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
 mongoose
   .connect(
-    "mongodb+srv://rajanrajac11:BSRw7AYJht6kybwD@cluster0.jbx9n.mongodb.net/Node-API?retryWrites=true&w=majority&appName=Cluster0"
+    "mongodb+srv://rajanrajac11:BSRw7AYJht6kybwD@cluster0.jbx9n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   )
   .then(() => {
     console.log("Connected!");
