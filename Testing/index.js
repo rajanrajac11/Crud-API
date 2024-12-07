@@ -3,6 +3,8 @@ const Product = require("./models/product.model.js");
 const app = express();
 const mongoose = require("mongoose");
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("Wassup Everyone. There is match of Pokhara and Janakpur today.");
 });
