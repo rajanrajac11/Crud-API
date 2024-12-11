@@ -1,8 +1,15 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const productRouter = require("./routes/product.router");
 
 const port = process.env.PORT || 3000;
+
+//middleware
+app.use(express.json());
+
+//router use
+app.use("/api/products", productRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello This is testing");
