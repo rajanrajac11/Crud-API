@@ -17,11 +17,14 @@ app.get("/", (req, res) => {
 
 mongoose
   .connect(
-    "mongodb+srv://rajanrajac11:eG18N20ocDGWMuq2@api-testing.qfa4j.mongodb.net/?retryWrites=true&w=majority&appName=API-Testing"
+    "mongodb+srv://rajanrajac11:<password>@api-testing.qfa4j.mongodb.net/?retryWrites=true&w=majority&appName=API-Testing"
   )
   .then(() => {
+    console.log("Database Connected!");
     app.listen(3000, () => {
-      console.log("Database Connected!");
       console.log(`Server is running at port ${port}`);
     });
+  })
+  .catch(() => {
+    console.log("Connectin failed!");
   });
