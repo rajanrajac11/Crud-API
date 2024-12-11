@@ -35,13 +35,12 @@ const addProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const product = await Product.findByIdAndUpdate(id);
+    const product = await Product.findByIdAndUpdate(id, req.body);
     if (!product) {
-      res.status(404).json("Product not updated ");
-    } else {
-      console.log("Product updated");
-      res.status(200).json(product);
+      return res.status(404).json("Product not found");
     }
+    const updatedProduct = await Product.findById(id);
+    res.status(200).json(updateProduct);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
