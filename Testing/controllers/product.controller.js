@@ -11,7 +11,7 @@ const getProducts = async (req, res) => {
 
 const getProduct = async (req, res) => {
   try {
-    const { id } = req.params();
+    const { id } = req.params;
     const product = await Product.findById(id);
     if (!product) {
       res.status(404).json("Product Not found");
@@ -34,7 +34,7 @@ const addProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   try {
-    const { id } = req.params();
+    const { id } = req.params;
     const product = await Product.findByIdAndUpdate(id);
     if (!product) {
       res.status(404).json("Product not updated ");
@@ -49,7 +49,7 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   try {
-    const { id } = req.params();
+    const { id } = req.params;
     const product = await Product.findByIdAndDelete(id);
     res.status(200).json("Product deleted successfully");
   } catch (error) {
